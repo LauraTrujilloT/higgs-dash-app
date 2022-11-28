@@ -23,11 +23,11 @@ controls = dbc.Card(
             [
                 dbc.Label("Energy"),
                 dcc.Dropdown(
-                    id="y-variable",
+                    id="energy-variable",
                     options=[
-                        {"label": col, "value": col} for col in hyy_dataframe().columns
+                        {"label": str(col)+" TeV", "value": col} for col in hyy_dataframe()['energy_TeV'].unique()
                     ],
-                    value="sepal width (cm)",
+                    value=13,
                 ),
             ]
         ),
@@ -55,7 +55,7 @@ layout = dbc.Container(
                             html.Hr(),
                             html.Div(controls)
                         ], align='center'), 
-                    md=3),
+                    md=4),
                 dbc.Col(
                     html.Iframe(
                                 id="hyy-graph", 
@@ -64,7 +64,7 @@ layout = dbc.Container(
                                     'border-width': '5', 
                                     'width': '100%',
                                     'height': '500px'}
-                            ), md=9),
+                            ), md=8),
             ],
             align="center",
         ),
