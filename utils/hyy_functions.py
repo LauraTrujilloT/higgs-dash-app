@@ -70,8 +70,8 @@ def plot_data(data, lumi=0.5, fraction=0.8):
     # *************
     # Main plot 
     # *************
-
-    plt.axes([0.1,0.3,0.85,0.65]) # left, bottom, width, height 
+    plt.clf()
+    plt.axes([0.1,0.3,0.85,0.65]) # left, bottom, width, height
     main_axes = plt.gca() # get current axes
  
     # plot the data points
@@ -154,6 +154,7 @@ def plot_data(data, lumi=0.5, fraction=0.8):
     # Data-Bkg plot 
     # *************
     plt.axes([0.1,0.1,0.85,0.2]) # left, bottom, width, height
+
     sub_axes = plt.gca() # get the current axes
     
     # set the y axis to be symmetric about Data-Background=0
