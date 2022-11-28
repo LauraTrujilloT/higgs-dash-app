@@ -3,23 +3,25 @@ from dash import dcc
 from pages.hyy.hyy_data import hyy_dataframe
 import dash_bootstrap_components as dbc
 
+image_path = 'assets/Hyy_feynman.png'
+
 controls = dbc.Card(
     [
         dbc.FormGroup(
             [
                 dbc.Label("Sample"),
                 dcc.Dropdown(
-                    id="hyy-variable",
+                    id="sample-variable",
                     options=[
-                        {"label": col, "value": col} for col in hyy_dataframe().columns
+                        {"label": "Sample "+str(col), "value": str(col)} for col in hyy_dataframe()['sample'].unique()
                     ],
-                    value="sepal length (cm)",
+                    value="A",
                 ),
             ]
         ),
         dbc.FormGroup(
             [
-                dbc.Label("Y variable"),
+                dbc.Label("Energy"),
                 dcc.Dropdown(
                     id="y-variable",
                     options=[
@@ -39,13 +41,29 @@ layout = dbc.Container(
         html.Hr(),
         dbc.Row(
             [
-                dbc.Col(controls, md=3),
+                dbc.Col(
+                    dbc.Col(
+                        [
+                            html.Div(
+                                html.Img(
+                                    src=image_path, 
+                                    style={
+                                        'height':'100%', 
+                                        'width':'100%'}
+                                    )
+                                ),
+                            html.Hr(),
+                            html.Div(controls)
+                        ], align='center'), 
+                    md=3),
                 dbc.Col(
                     html.Iframe(
                                 id="hyy-graph", 
                                 srcDoc=None,
-                                style={'border-width': '5', 'width': '100%',
-                                        'height': '500px'}
+                                style={
+                                    'border-width': '5', 
+                                    'width': '100%',
+                                    'height': '500px'}
                             ), md=9),
             ],
             align="center",
@@ -59,23 +77,3 @@ layout = dbc.Container(
     ],
     fluid=True,
 )
-''' 
-layout = html.Div([
-    html.H1("HYY Analysis"),
-    html.Hr(),
-    html.Iframe(
-                id='hyy-graph', 
-                srcDoc=None,
-                style={'border-width': '5', 'width': '100%',
-                       'height': '500px'}
-                ),
-    dcc.Slider(
-        id='myy-slider',
-        min=hyy_dataframe()['myy'].min(),
-        max=hyy_dataframe()['myy'].max(),
-        value=hyy_dataframe()['myy'].min(),
-        marks={str(myy): str(myy) for myy in hyy_dataframe()['myy'].unique()},
-        step=None
-    )
-])
-'''

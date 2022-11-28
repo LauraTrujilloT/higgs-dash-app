@@ -7,7 +7,7 @@ from utils.constants import home_page_location, gdp_page_location, iris_page_loc
 # it consists of a title, and a toggle, the latter is hidden on large screens
 sidebar_header = dbc.Row(
     [
-        dbc.Col(html.H2("Sidebar", className="display-4")),
+        dbc.Col(html.P("Higgs App", className="display-4")),
         dbc.Col(
             [
                 html.Button(
@@ -51,8 +51,8 @@ sidebar = html.Div(
             [
                 html.Hr(),
                 html.P(
-                    "A responsive sidebar layout with collapsible navigation "
-                    "links.",
+                    "A sidebar for selecting your page"
+                    "",
                     className="lead",
                 ),
             ],
@@ -63,9 +63,10 @@ sidebar = html.Div(
             dbc.Nav(
                 [
                     dbc.NavLink("Home", href=home_page_location, active="exact"),
-                    dbc.NavLink("GDP", href=gdp_page_location, active="exact"),
-                    dbc.NavLink("Iris", href=iris_page_location, active="exact"),
                     dbc.NavLink("HYY Analysis", href=hyy_page_location, active="exact"),
+                    html.Hr(),
+                    dbc.NavLink("ñapa-GDP", href=gdp_page_location, active="exact"),
+                    dbc.NavLink("ñapa-Iris", href=iris_page_location, active="exact"),
                 ],
                 vertical=True,
                 pills=True,

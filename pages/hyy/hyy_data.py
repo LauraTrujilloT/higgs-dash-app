@@ -11,8 +11,8 @@ import pandas as pd
 # Constants
 lumi = 0.5 #fb-1
 fraction = 0.8
-data_path = "https://raw.githubusercontent.com/LauraTrujilloT/notebooks-collection-opendata-dashapp/dev-dash/data_extracts/13TeV/hyy_data_sample_a.csv"
-sample_list = ['sample_A']
+data_path = "https://raw.githubusercontent.com/LauraTrujilloT/notebooks-collection-opendata-dashapp/dev-dash/data_extracts/13TeV/hyy_dataset.csv" 
+data_a_path = "https://raw.githubusercontent.com/LauraTrujilloT/notebooks-collection-opendata-dashapp/dev-dash/data_extracts/13TeV/hyy_data_sample_a.csv"
  
 @cache.memoize(timeout=TIMEOUT)
 def hyy_dataframe():

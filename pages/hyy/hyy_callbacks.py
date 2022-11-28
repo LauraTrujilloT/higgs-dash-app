@@ -7,9 +7,10 @@ from pages.hyy.hyy_data import hyy_dataframe
 
 @app.callback(
     Output('hyy-graph', 'srcDoc'),
-    Input('hyy-variable', 'value'))
+    Input('sample-variable', 'value'))
 def update_figure(selected_value):
     hyy_df = hyy_dataframe()
-    filtered_df = hyy_df[hyy_df.myy == selected_value]
-    html_fig = plot_data(data=hyy_df)
+    filtered_df = hyy_df[hyy_df['sample'] == selected_value]
+    lumi = float(filtered_df['lumi'].unique()[0])
+    html_fig = plot_data(data=filtered_df, lumi=lumi)
     return html_fig
