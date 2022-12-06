@@ -2,20 +2,21 @@
 Funciones necesarias para crear el dataframe del decaimiento HYY
 Extraído del ATLAS Open Data
 '''
-import uproot3 # for reading .root files
 import pandas as pd # to store data as dataframe
-import time # to measure time to analyse
-import math # for mathematical functions such as square root
 import numpy as np # # for numerical calculations such as histogramming
 import matplotlib.pyplot as plt # for plotting
 import mpld3
 from matplotlib.ticker import MaxNLocator,AutoMinorLocator # for minor ticks
 from lmfit.models import PolynomialModel, GaussianModel # for the signal and background fits
 plt.switch_backend('Agg')
-#plt.rcParams.update({"text.usetex": True,"font.family": "Helvetica"})
+
 
 def plot_data(data, lumi=0.5, fraction=0.8): 
-
+    '''returns pyplot fig 
+    _params (df) data
+    _params (float) lumi
+    _params (float) fraction
+    '''
     xmin = 100. # GeV
     xmax = 160. # GeV
     step_size = 2. # GeV

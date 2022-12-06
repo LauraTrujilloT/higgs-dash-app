@@ -54,7 +54,7 @@ layout = dbc.Container(
         ),
         html.Hr(),
         dbc.Row(
-            dbc.Col(make_dash_table(dataframe()), width={"size": 8, "offset": 3}),
+            #dbc.Col(make_dash_table(dataframe()), width={"size": 8, "offset": 3}),
             align="center",
         )
     ],
